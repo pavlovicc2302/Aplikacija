@@ -35,7 +35,7 @@ export class HomePage implements OnInit{
 
   async goToAddPage(){ // poziva se onda kada korisnik klikne na dugme za dodavanje novog task-a
     const modal = await this.modalCtrl.create({
-      component: AddNewItemPage, // otvara se modal za AddNewItemPage komponentu
+      component: AddNewItemPage, // otvara se modal za AddNewItemPage komponentuu
     });
     return await modal.present();
   }
