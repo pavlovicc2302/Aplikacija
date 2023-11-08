@@ -1,20 +1,47 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Taylor Swift!!
+<ion-header [translucent]="true"> <!-- postavljanje pozadine zaglavlja blago providno-->
+  <ion-toolbar> <!-- navigaciona traka unutar zaglavlja -->
+    <ion-title> <!-- naslov aplikacije/stranice -->
+      Today
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list *ngFor="let task of tasks"> <!--prolazi kroz niz tasks i kreira stavku liste za svaki objekat task u nizu -->
+    <ion-card> <!-- kontejner za prikaz sadrzaja-->
+      <ion-card-header> <!-- zaglavlje kartice; sadrzi naslov kartice -->
+        <ion-card-title>{{task.name}}</ion-card-title> <!-- prikazuje ime samog task-a -->
+        <ion-item lines="full"> <!-- zauzima celu sirinu sa linijom razdvajanja-->
+          <ion-icon *ngIf="task.priority === 'low'" color="success" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="task.priority === 'middle'" color="warning" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="task.priority === 'high'" color="danger" name="ellipse"></ion-icon>
+          <ion-label>{{task.category}}</ion-label> <!-- prikaz kategrorije kojoj pripada dati task -->
+        </ion-item>
+      </ion-card-header>
+    
+      <ion-card-content> <!-- sadrzaj kontejnera -->
+        <ion-row> <!-- horizontalni kontejner za elemente -->
+          <ion-item button lines="full" (click)="goToUpdatePage(task)"> <!-- kada se klikne na dugme, onda se pokrece funkcija goToUpdatePage() i kao parametar se prosledjuje objekat task-->
+            <ion-icon name = "create-outline"></ion-icon> <!-- ikonica za kreiranje; pogledati na sajtu -->
+            <ion-label> Update</ion-label> <!-- Prikazavanje teksta Update -->
+          </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+          <ion-item button lines="full" (click)="deleteTask(task)"><!-- kada se klikne na dugme, onda se pokrece funkcija deleteTask() i kao parametar se prosledjuje objekat task-->
+            <ion-icon name = "trash-outline"></ion-icon>
+            <ion-label> Delete</ion-label> <!-- Prikazavanje teksta Delete -->
+          </ion-item>
+
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-list>
+
+  <!-- FAB je Floating Action Button -->
+  <ion-fab vertical ="bottom" horizontal="end" slot="fixed"> <!-- dugme se nalazi na dnu desno i bice fiksiran na interfejsu-->
+    <ion-fab-button (click)="goToAddPage()"> <!-- Kada se klikne na dugme, onda se poziva funkcija goToAddPage()-->
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
