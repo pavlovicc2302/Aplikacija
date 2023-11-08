@@ -1,7 +1,8 @@
 <ion-header [translucent]="true"> <!-- postavljanje pozadine zaglavlja blago providno-->
   <ion-toolbar> <!-- navigaciona traka unutar zaglavlja -->
     <ion-title> <!-- naslov aplikacije/stranice -->
-      Today
+      <h1> Tasks</h1>
+      <p class="date" size="10px">{{today | date:'fullDate'}}</p>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,17 +13,17 @@
       <ion-card-header> <!-- zaglavlje kartice; sadrzi naslov kartice -->
         <ion-card-title>{{task.name}}</ion-card-title> <!-- prikazuje ime samog task-a -->
         <ion-item lines="full"> <!-- zauzima celu sirinu sa linijom razdvajanja-->
-          <ion-icon *ngIf="task.category === 'low'" color="success" name="ellipse"></ion-icon>
-          <ion-icon *ngIf="task.category === 'middle'" color="warning" name="ellipse"></ion-icon>
-          <ion-icon *ngIf="task.category === 'high'" color="danger" name="ellipse"></ion-icon>
-          <ion-label>{{task.category}}</ion-label> <!-- prikaz kategrorije kojoj pripada dati task -->
+          <ion-icon *ngIf="task.category === 'Low'" color="success" name="logo-ionic"></ion-icon>
+          <ion-icon *ngIf="task.category === 'High'" color="danger" name="logo-ionic"></ion-icon>
+          <ion-label>&nbsp;{{task.category}}</ion-label> <!-- prikaz kategrorije kojoj pripada dati task -->
         </ion-item>
       </ion-card-header>
     
       <ion-card-content> <!-- sadrzaj kontejnera -->
+        <p class="date">{{today | date:'fullDate'}}</p>
         <ion-row> <!-- horizontalni kontejner za elemente -->
           <ion-item button lines="full" (click)="goToUpdatePage(task)"> <!-- kada se klikne na dugme, onda se pokrece funkcija goToUpdatePage() i kao parametar se prosledjuje objekat task-->
-            <ion-icon name = "create-outline"></ion-icon> <!-- ikonica za kreiranje; pogledati na sajtu -->
+            <ion-icon name = "megaphone-outline"></ion-icon> <!-- ikonica za kreiranje; pogledati na sajtu -->
             <ion-label> Update</ion-label> <!-- Prikazavanje teksta Update -->
           </ion-item>
 
@@ -38,7 +39,7 @@
   </ion-list>
 
   <!-- FAB je Floating Action Button -->
-  <ion-fab vertical ="bottom" horizontal="end" slot="fixed"> <!-- dugme se nalazi na dnu desno i bice fiksiran na interfejsu-->
+  <ion-fab vertical ="bottom" horizontal="end"> <!-- dugme se nalazi na dnu desno -->
     <ion-fab-button (click)="goToAddPage()"> <!-- Kada se klikne na dugme, onda se poziva funkcija goToAddPage()-->
       <ion-icon name="add-circle-outline"></ion-icon>
     </ion-fab-button>

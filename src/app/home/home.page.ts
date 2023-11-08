@@ -17,8 +17,11 @@ type Task = {
 })
 export class HomePage implements OnInit{
 
-  today: number = Date.now(); // deklaracija promenljive kojoj se dodeljuje trenutni Datum i vreme
-  tasks: Array<Task> = []; //deklaracije promenljive kao tip niz objekata
+  today: number = Date.now(); // // definisemo kog je tipa podatka, u number pisemo trenutni datum
+  // on ce u number sacuvati neki ruzan broj koji predstavlja brojanje od nekog ihahaj datuma
+
+  tasks: Array<Task> = []; //niz objekata zato sto jedan task ima naziv, prioritet, i datum 
+  // mora da se dodeli inicijalna vrednost - mozemo samo da dodamo [] jer ce onda prestati da se buni
 
   constructor(public modalCtrl: ModalController) {} // koriscenje ModalController za otvaranje modala na ovoj stranici
 
@@ -26,9 +29,14 @@ export class HomePage implements OnInit{
   ngOnInit(): void { 
     this.tasks=[
       {
-        name:'Ime zadatka',
+        name:'Zadatak 1',
         date: new Date(),
         category: 'Low'
+      },
+      {
+        name:'Zadatak 2',
+        date: new Date(),
+        category: 'High'
       }
     ];
   }
