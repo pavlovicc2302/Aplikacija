@@ -12,9 +12,9 @@
       <ion-card-header> <!-- zaglavlje kartice; sadrzi naslov kartice -->
         <ion-card-title>{{task.name}}</ion-card-title> <!-- prikazuje ime samog task-a -->
         <ion-item lines="full"> <!-- zauzima celu sirinu sa linijom razdvajanja-->
-          <ion-icon *ngIf="task.priority === 'low'" color="success" name="ellipse"></ion-icon>
-          <ion-icon *ngIf="task.priority === 'middle'" color="warning" name="ellipse"></ion-icon>
-          <ion-icon *ngIf="task.priority === 'high'" color="danger" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="task.category === 'low'" color="success" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="task.category === 'middle'" color="warning" name="ellipse"></ion-icon>
+          <ion-icon *ngIf="task.category === 'high'" color="danger" name="ellipse"></ion-icon>
           <ion-label>{{task.category}}</ion-label> <!-- prikaz kategrorije kojoj pripada dati task -->
         </ion-item>
       </ion-card-header>
@@ -26,10 +26,10 @@
             <ion-label> Update</ion-label> <!-- Prikazavanje teksta Update -->
           </ion-item>
 
-          <ion-item button lines="full" (click)="deleteTask(task)"><!-- kada se klikne na dugme, onda se pokrece funkcija deleteTask() i kao parametar se prosledjuje objekat task-->
+         <!-- <ion-item button lines="full" (click)="deleteTask(task)"> kada se klikne na dugme, onda se pokrece funkcija deleteTask() i kao parametar se prosledjuje objekat task
             <ion-icon name = "trash-outline"></ion-icon>
-            <ion-label> Delete</ion-label> <!-- Prikazavanje teksta Delete -->
-          </ion-item>
+            <ion-label> Delete</ion-label> 
+          </ion-item>  -->
 
         </ion-row>
       </ion-card-content>
