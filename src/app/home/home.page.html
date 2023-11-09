@@ -13,8 +13,8 @@
       <ion-card-header> <!-- zaglavlje kartice; sadrzi naslov kartice -->
         <ion-card-title>{{task.name}}</ion-card-title> <!-- prikazuje ime samog task-a -->
         <ion-item lines="full"> <!-- zauzima celu sirinu sa linijom razdvajanja-->
-          <ion-icon *ngIf="task.category === 'Low'" color="success" name="logo-ionic"></ion-icon>
-          <ion-icon *ngIf="task.category === 'High'" color="danger" name="logo-ionic"></ion-icon>
+          <ion-icon *ngIf="task.category === 'low'" color="success" name="logo-ionic"></ion-icon>
+          <ion-icon *ngIf="task.category === 'high'" color="danger" name="logo-ionic"></ion-icon>
           <ion-label>&nbsp;{{task.category}}</ion-label> <!-- prikaz kategrorije kojoj pripada dati task -->
         </ion-item>
       </ion-card-header>
@@ -26,7 +26,8 @@
             <ion-icon name = "megaphone-outline"></ion-icon> <!-- ikonica za kreiranje; pogledati na sajtu -->
             <ion-label> Update</ion-label> <!-- Prikazavanje teksta Update -->
           </ion-item>
-
+          <ion-button (click)="deleteTask(task)"> Delete</ion-button>
+          
          <!-- <ion-item button lines="full" (click)="deleteTask(task)"> kada se klikne na dugme, onda se pokrece funkcija deleteTask() i kao parametar se prosledjuje objekat task
             <ion-icon name = "trash-outline"></ion-icon>
             <ion-label> Delete</ion-label> 

@@ -24,4 +24,9 @@ export class DataService {
     // referenca ka kolekciji, jedinstveno polje
 
   }
+
+  deleteTask(task:Task){
+    const taskRef = doc(this.firestore, `tasks/${task.id}`);
+    return deleteDoc(taskRef);
+  }
 }
