@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { collection, collectionData, Firestore, doc,deleteDoc } from '@angular/fire/firestore';
 
+import { addDoc, updateDoc } from 'firebase/firestore';
+
 export interface Task{
   id?:number;
   name:string;
@@ -29,4 +31,10 @@ export class DataService {
     const taskRef = doc(this.firestore, `tasks/${task.id}`);
     return deleteDoc(taskRef);
   }
+
+  addTask(task:Task){
+    const tasksRef=collection(this.firestore, 'tasks'); 
+    return addDoc(tasksRef, task);
+  }
+
 }
