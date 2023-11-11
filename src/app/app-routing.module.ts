@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'update-item',
     loadChildren: () => import('./update-item/update-item.module').then( m => m.UpdateItemPageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'login-user',
+    loadChildren: () => import('./login-user/login-user.module').then( m => m.LoginUserPageModule)
+  },
 ];
 
 @NgModule({
